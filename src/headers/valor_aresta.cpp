@@ -16,3 +16,19 @@ bool ValorAresta::operator <(const ValorAresta& comp) {
     }
     return false;
 }
+
+int ValorAresta::getEndpoint1() {
+    return this->endpoint1;
+}
+
+int ValorAresta::getEndpoint2() {
+    return this->endpoint2;
+}
+
+int ValorAresta::getCusto() {
+    return this->custo;
+}
+
+int ValorAresta::getAtratividade() {
+    return this->atratividade;
+}

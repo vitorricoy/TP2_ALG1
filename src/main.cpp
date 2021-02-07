@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "headers/valor_aresta.h"
 #include "headers/union_find.h"
 
@@ -15,7 +16,7 @@ vector<ValorAresta> kruskal(int n, vector<ValorAresta> arestas) {
 		if(unionFind.encontrarConjunto(endpoint1) != unionFind.encontrarConjunto(endpoint2)) {
 			unionFind.unirConjunto(endpoint1, endpoint2);
 			// aresta faz parte da AGM
-            ret.push_back(aresta);
+            retorno.push_back(aresta);
 		}
 	}
     return retorno;
@@ -32,9 +33,9 @@ int main() {
     vector<ValorAresta> arestas;
     for(int I=0; I<t; I++) {
         int endpoint1, endpoint2, custo;
-        int atratividadeTrecho = atratividade[endpoint1]+atratividade[endpoint2];
         cin >> endpoint1 >> endpoint2 >> custo;
-        arestas.pb(ValorAresta(endpoint1, endpoint2, custo, atratividadeTrecho));
+        int atratividadeTrecho = atratividade[endpoint1]+atratividade[endpoint2];
+        arestas.push_back(ValorAresta(endpoint1, endpoint2, custo, atratividadeTrecho));
     }
     vector<ValorAresta> mst = kruskal(n, arestas);
     int custoMST = 0, atratividadeMST = 0;
