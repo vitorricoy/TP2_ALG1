@@ -19,10 +19,11 @@ UnionFind::UnionFind(int n) {
 
 // Encontra qual conjunto do union-find o vértice pertence
 int UnionFind::encontrarConjunto(int vertice) {
-    // Se o vértice é o seu próprio pai, chegamos no vértice-pai do conjunto
-    // Se ele não é o própio pai, ainda não encontramos o id do conjunto
+    // Se o vértice aponta para ele mesmo, ele é a raíz do conjunto
+    // Se ele não aponta para si mesmo, ainda não encontramos a raíz do conjunto
     if(vertice != pai[vertice]) {
-        // Guarda o id do pai do conjunto como o pai do vértice
+        // Guarda o id da raíz do conjunto como o pai do vértice atual
+        // Otimiza a execução pois evita percorrer o caminho do vértice ao pai novamente
         pai[vertice] = encontrarConjunto(pai[vertice]);
     }
     // Retorna o id do conjunto
@@ -31,7 +32,7 @@ int UnionFind::encontrarConjunto(int vertice) {
 
 // Determina que dois vértices pertencem ao mesmo conjunto
 void UnionFind::unirConjunto(int vertice1, int vertice2) {
-    // Salva o valor do id do conjunto de cada um dos vertices
+    // Salva o valor da raíz do conjunto de cada um dos vertices
     vertice1 = encontrarConjunto(vertice1);
     vertice2 = encontrarConjunto(vertice2);
     // Se eles pertencem ao mesmo conjunto, já estão unidos
