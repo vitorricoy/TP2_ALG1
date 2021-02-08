@@ -19,9 +19,9 @@ vector<ValorAresta> kruskal(int n, vector<ValorAresta> arestas) {
         // Obtem os endpoints
 		int endpoint1 = aresta.getEndpoint1();
         int endpoint2 = aresta.getEndpoint2();
-        // Se as arestas não estão no mesmo conjunto (não criam um ciclo)
+        // Se os endpoints não estão no mesmo conjunto (a aresta não cria um ciclo)
 		if(unionFind.encontrarConjunto(endpoint1) != unionFind.encontrarConjunto(endpoint2)) {
-            // Determina que as arestas estão no mesmo conjunto
+            // Determina que os vértices dos endpoints estão no mesmo conjunto
 			unionFind.unirConjunto(endpoint1, endpoint2);
 			// Insere a aresta no retorno do algoritmo
             retorno.push_back(aresta);
